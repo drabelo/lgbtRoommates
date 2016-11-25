@@ -1,2 +1,0 @@
-<input type="text" autocomplete="off" value="{{query}}" class="tp-ac__input {{class}}"
-  placeholder="{{placeholder}}" tabindex="{{tabindex}}">
