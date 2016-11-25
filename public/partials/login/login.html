@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+
+
+<body>
+
+    <h1>Login</h1>
+    <p>
+        <div>
+
+            <form ng-submit="search()">
+                <!-- will automatically update $scope.user.first_name and .last_name -->
+                <label for="pwd">Username:</label>
+                <input ng-model="user.email" class="form-control" placeholder="Enter username">
+
+                <label for="pwd">Password:</label>
+                <input type="password" ng-model="user.password" class="form-control" placeholder="Enter password">
+
+                <button type="submit" value="Search" ng-click="login()" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+
+</body>
+
+</html>
+
+<!--
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->

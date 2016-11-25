@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MyApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>LGBT Roommate</title>
+
+    <!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="assets/css/random.css">
+
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="teleport-autocomplete/dist/teleport-autocomplete.js"></script>
+<link rel="stylesheet" href="teleport-autocomplete/dist/teleport-autocomplete.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.js"></script>
+        <script src="JS/app.js"></script>
+        <script src="partials/login/loginController.js"></script>
+        <script src="partials/home/homeController.js"></script>
+        <script src="partials/results/resultsController.js"></script>
+        <script src="partials/dashboard/dashController.js"></script>
+        <script src="partials/leaser/leaserController.js"></script>
+        <script src="JS/ngstorage/ngStorage.min.js"></script>
+        <script src="JS/ng-idle/angular-idle.js"></script>
+<script src="http://cdn.backand.net/backand/dist/1.8.11/backand.min.js"></script>
+    <style>
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+            background-color: #eee;
+        }
+    </style>
+
+    <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAnAsKcQAAKw93xefWZgm5TfKZsUD68l8k",
+        authDomain: "lgbtroomies.firebaseapp.com",
+        databaseURL: "https://lgbtroomies.firebaseio.com",
+        storageBucket: "lgbtroomies.appspot.com",
+        messagingSenderId: "790913208393"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+</head>
+
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#!index">LGBT Roommates</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                  <li ng-class="menuClass('index')"><a href="#!index">Search for Roommate</a></li>
+                  <li ng-class="menuClass('leaser')"><a href="#!leaser">Lease a place</a></li>
+                  <li ng-class="menuClass('login')"><a href="#!login">Login</a></li>
+                  <li ng-class="menuClass('dashboard')"><a href="#!dashboard">Dashboard</a></li>
+                  <li ng-class="menuClass('logout')"><a href="#!logout">Logout</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </div>
+
+
+
+    <div class="view-animate" ng-view="">
+
+    </div> <!-- /container -->
+
+
+
+
+</body>
+</html>

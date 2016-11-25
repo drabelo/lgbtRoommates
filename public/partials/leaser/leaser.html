@@ -1,0 +1,33 @@
+
+<div class="results"></div>
+Location
+<input type="text" class="my-input" name="field" tabindex="1" autocomplete="off">
+
+<form>
+  <div class="form-group">
+    <label for="rent">Title:</label>
+    <input class="form-control" id="title">
+  </div>
+  <div class="form-group">
+    <label for="pwd">About:</label>
+    <input class="form-control" id="about">
+  </div>
+
+</form>
+
+<a ng-click="listPlace()" class="btn btn-raised btn-success">List this</a>
+
+
+<script>
+      var $results = document.querySelector('.results');
+      var appendToResult = $results.insertAdjacentHTML.bind($results, 'afterend');
+      var objec = null;
+      TeleportAutocomplete.init('.my-input').on('change', function(value) {
+        objec = {"Parameters" : {
+          Latitude: value.latitude,
+          Longitude: value.longitude
+        }};
+
+        appendToResult('<pre>' + JSON.stringify(value, null, 2) + '</pre>');
+      });
+    </script>
