@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="MyApp">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,26 +10,36 @@
 
     <title>LGBT Roommate</title>
 
+    <script src="teleport-autocomplete/dist/teleport-autocomplete.js"></script>
+    <link rel="stylesheet" href="teleport-autocomplete/dist/teleport-autocomplete.css">
+
     <!-- Bootstrap core CSS -->
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
-<link rel="stylesheet" href="assets/css/random.css">
+    <link rel="stylesheet" href="assets/css/random.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.5.1/restangular.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.5.1/restangular.min.js"></script>
 
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.0.0/lodash.js"></script>
 
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="teleport-autocomplete/dist/teleport-autocomplete.js"></script>
-<link rel="stylesheet" href="teleport-autocomplete/dist/teleport-autocomplete.css">
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.js"></script>
-        <script src="JS/app.js"></script>
-        <script src="partials/login/loginController.js"></script>
-        <script src="partials/home/homeController.js"></script>
-        <script src="partials/results/resultsController.js"></script>
-        <script src="partials/dashboard/dashController.js"></script>
-        <script src="partials/leaser/leaserController.js"></script>
-        <script src="JS/ngstorage/ngStorage.min.js"></script>
-        <script src="JS/ng-idle/angular-idle.js"></script>
-<script src="http://cdn.backand.net/backand/dist/1.8.11/backand.min.js"></script>
+    <script src="JS/app.js"></script>
+    <script src="partials/login/loginController.js"></script>
+    <script src="partials/home/homeController.js"></script>
+    <script src="partials/results/resultsController.js"></script>
+    <script src="partials/dashboard/dashController.js"></script>
+    <script src="partials/register/registerController.js"></script>
+    <script src="partials/leaser/leaserController.js"></script>
+    <script src="partials/search/searchController.js"></script>
+
+    <script src="JS/ngstorage/ngStorage.min.js"></script>
+    <script src="JS/ng-idle/angular-idle.js"></script>
+    <!-- <script src="JS/lodash/lodash.js"></script> -->
+
+    <script src="http://cdn.backand.net/backand/dist/1.8.11/backand.min.js"></script>
+
     <style>
         body {
             padding-top: 60px;
@@ -39,15 +50,15 @@
 
     <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
     <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyAnAsKcQAAKw93xefWZgm5TfKZsUD68l8k",
-        authDomain: "lgbtroomies.firebaseapp.com",
-        databaseURL: "https://lgbtroomies.firebaseio.com",
-        storageBucket: "lgbtroomies.appspot.com",
-        messagingSenderId: "790913208393"
-      };
-      firebase.initializeApp(config);
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAnAsKcQAAKw93xefWZgm5TfKZsUD68l8k",
+            authDomain: "lgbtroomies.firebaseapp.com",
+            databaseURL: "https://lgbtroomies.firebaseio.com",
+            storageBucket: "lgbtroomies.appspot.com",
+            messagingSenderId: "790913208393"
+        };
+        firebase.initializeApp(config);
     </script>
 
 </head>
@@ -67,13 +78,16 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                  <li ng-class="menuClass('index')"><a href="#!index">Search for Roommate</a></li>
-                  <li ng-class="menuClass('leaser')"><a href="#!leaser">Lease a place</a></li>
-                  <li ng-class="menuClass('login')"><a href="#!login">Login</a></li>
-                  <li ng-class="menuClass('dashboard')"><a href="#!dashboard">Dashboard</a></li>
-                  <li ng-class="menuClass('logout')"><a href="#!logout">Logout</a></li>
+                    <li ng-class="menuClass('index')"><a href="#!index">Home</a></li>
+                    <li ng-class="menuClass('search')"><a href="#!search">Search for a room</a></li>
+                    <li ng-class="menuClass('leaser')"><a href="#!leaser">Lease a place</a></li>
+                    <li ng-class="menuClass('login')"><a href="#!login">Login</a></li>
+                    <li ng-class="menuClass('register')"><a href="#!register">Register</a></li>
+                    <li ng-class="menuClass('dashboard')"><a href="#!dashboard">Dashboard</a></li>
+                    <li ng-class="menuClass('logout')"><a href="#!logout">Logout</a></li>
                 </ul>
-            </div><!--/.nav-collapse -->
+            </div>
+            <!--/.nav-collapse -->
         </div>
     </div>
 
@@ -81,10 +95,12 @@
 
     <div class="view-animate" ng-view="">
 
-    </div> <!-- /container -->
+    </div>
+    <!-- /container -->
 
 
 
 
 </body>
+
 </html>

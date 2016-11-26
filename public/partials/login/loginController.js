@@ -5,17 +5,19 @@ app.controller('LoginCtrl', ['$scope', '$http', '$localStorage', '$rootScope', '
     $rootScope.$broadcast('turnOnLogin');
 
     $scope.login = function() {
-
-        var headers = {
-            username: $scope.user.email,
-            password: $scope.user.password,
-        };
+console.log("here");
+        firebase.auth().signInWithEmailAndPassword($scope.user.email, $scope.user.password).catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // ...
+        });
 
         console.log("User is now logged in");
         $rootScope.loggedInUser = $scope.user.email;
         $rootScope.$broadcast('turnOnDashboard');
         $rootScope.$broadcast('turnOffLogin');
         $rootScope.$broadcast('turnOnLogout');
-        $location.path("/dashboard");
+        $location.path("/search");
     };
 }]);

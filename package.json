@@ -7,8 +7,10 @@
     "cloudant": "^1.4.2",
     "express": "^4.13.4",
     "jsonwebtoken": "^7.0.1",
+    "lodash": "^4.17.2",
     "mongoose": "^4.5.0",
     "morgan": "^1.7.0",
+    "ng-places-autocomplete": "^1.2.1",
     "passport": "^0.3.2",
     "passport-jwt": "^2.0.0"
   }
