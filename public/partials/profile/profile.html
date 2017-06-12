@@ -1,0 +1,27 @@
+Hi there! This is your profile.
+
+<br>
+Name: {{name}}
+<br>
+Email: {{email}}
+<br>
+UID: {{uid}}
+
+<br>
+<br>
+My listings:
+<br>
+
+
+
+    <div layout layout-wrap layout-sm="column" layout-xs="column">
+      <div flex="25" flex-sm="100" flex-xs="100" ng-repeat="card in cards" >
+        <md-card flex ng-click="goToRoom(card)">
+          <img ng-src="{{card.image}}" class="md-card-image" style="height:228px;" alt="Washed Out">
+         <md-card-content>
+           <h2>{{card.title}}</h2>
+           <p>{{card.body}}</p>
+         </md-card-content>
+        </md-card>
+      </div>
+</div>

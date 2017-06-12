@@ -1,8 +1,5 @@
-<!doctype html>
-<html lang="en">
 
-<script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
+
 
 <body>
 
@@ -12,7 +9,13 @@
 
             <form ng-submit="search()">
                 <!-- will automatically update $scope.user.first_name and .last_name -->
-                <label for="pwd">Username:</label>
+                <label for="pwd">First name:</label>
+                <input ng-model="user.firstName" class="form-control" placeholder="Enter First Name">
+
+                <label for="pwd">Last name:</label>
+                <input ng-model="user.lastName" class="form-control" placeholder="Enter Last Name">
+
+                <label for="pwd">Email:</label>
                 <input ng-model="user.email" class="form-control" placeholder="Enter username">
 
                 <label for="pwd">Password:</label>
@@ -22,12 +25,5 @@
             </form>
         </div>
 
+
 </body>
-
-</html>
-
-<!--
-Copyright 2016 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
--->

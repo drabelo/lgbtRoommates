@@ -1,0 +1,23 @@
+MESSAGING@
+<br>
+Convo between
+<br>
+Person1: {{person1}}
+<br>
+person2: {{person2}}
+
+<br>
+Room: {{roomId}}
+<br>
+
+<br>
+<p ng-bind-html = "Message"></p>
+<br>
+
+<form class="form-inline">
+  <div class="form-group">
+    <label for="email">Message</label>
+    <input class="form-control" ng-model="user1.input" id="email">
+  </div>
+  <button type="submit" ng-click="message()" class="btn btn-default">Enter</button>
+</form>

@@ -1,0 +1,31 @@
+<md-toolbar class="md-hue-2">
+
+<div class="md-toolbar-tools">
+  <h3>
+    <span>My Messages</span>
+  </h3>
+</div><br>
+</md-toolbar>
+<br>
+<!-- <div>
+      <div ng-repeat="card in cards">
+        <button type="button" class="btn btn-default" ng-click="goToMessage(card)">
+          <br>
+          <br>
+          <br>
+          <p>Person1: {{card.person1}}</p>
+          <p>Person2: {{card.person2}}</p>
+          <br>
+          <p ng-click="goToMessage(card)">Conversation: {{card.data}}</p>
+        </button>
+      </div>
+    </div> -->
+
+
+    <md-list-item class="md-3-line" ng-repeat="item in todos" ng-click="null">
+       <div class="md-list-item-text" ng-click="goToMessage(item)" layout="column">
+         <h3>{{ item.who }}</h3>
+       </div>
+       <md-divider ></md-divider>
+
+     </md-list-item>

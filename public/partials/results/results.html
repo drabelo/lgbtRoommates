@@ -2,11 +2,17 @@ THE RESULTS PAGE
 <br>
 {{results}}
 
-<div class="cards">
-      <div ng-repeat="card in cards">
-        <div class="card">
-          <h1 class="card-header">{{card.title}}</h1>
-          <p class="card-copy">{{card.body}}</p>
-        </div>
-      </div>
+
+
+
+                  <div layout layout-wrap layout-sm="column" layout-xs="column">
+                    <div flex="25" flex-sm="100" flex-xs="100" ng-repeat="card in cards" >
+                      <md-card flex ng-click="goToRoom(card)">
+                        <img ng-src="{{card.image}}" class="md-card-image" style="height:228px;" alt="Washed Out">
+                       <md-card-content>
+                         <h2>{{card.title}}</h2>
+                         <p>{{card.body}}</p>
+                       </md-card-content>
+                      </md-card>
+                    </div>
     </div>

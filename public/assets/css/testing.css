@@ -1,0 +1,27 @@
+.container {
+  border: 1px solid grey;
+  position: relative;
+}
+.container:nth-child(even) md-card {
+  background: rgba(255, 0, 0, 0.39);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.container:nth-child(odd) md-card {
+  background: rgba(0, 0, 255, 0.32);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+
+
+/*
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that can be in foundin the LICENSE file at http://material.angularjs.org/license.
+*/

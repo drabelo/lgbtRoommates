@@ -1,25 +1,24 @@
 app.controller('homeCtrl', ['$scope', '$http', '$localStorage', '$rootScope', '$location', function($scope, $http, $localStorage, $rootScope, $location){
 
+
   $scope.getResults = function() {
-    window.objec.Parameters.Distance = angular.element('#distance').val();
-      $rootScope.loggedInUser = "lol";
+    console.log("window object", window.objec)
       $location.path("/results");
 
   };
 
-  $scope.query = "";
-$scope.paOptions = {
-  updateModel : true
-};
-$scope.paTrigger = {};
-$scope.paDetails = {};
-$scope.placesCallback = function (error, details) {
-        console.log($scope.query);
-  if (error) {
-    return console.error(error);
-  }
-  $scope.paDetails = details;
-};
+  // var $results = document.querySelector('.results');
+  // var appendToResult = $results.insertAdjacentHTML.bind($results, 'afterend');
+  TeleportAutocomplete.init('.my-input').on('change', function(value) {
+    console.log("hit here");
+    objec = {"Parameters" : {
+      Latitude: 42.345463,
+      Longitude: -71.551628,
+      Distance : 20000
+            }};
+    // appendToResult('<pre>' + JSON.stringify(value, null, 2) + '</pre>');
+  });
+
 
 
 }]);

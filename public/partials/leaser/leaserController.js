@@ -7,27 +7,25 @@ app.controller('leaserCtrl', ['$scope', '$http', '$localStorage', '$rootScope', 
 
   var photos = [];
 
-  $http({
-    method: 'GET',
-    url : "https://api.backand.com/1/objects/action/room/1?",
-    params:{
-      "name": "files"
-    },
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    // you need to provide the file name
-    data: {
-      "filename": "Screen Shot 2016-11-22 at 11.14.00 PM.png"
-    }
-  }).then(function successCallback(response) {
-      console.log("Scuess", response)
-      $scope.myResults = response.data;
-    }, function errorCallback(response) {
-      // called asynchronously if an error occurs
-      // or server returns response with an error status.
-      console.log("Nooo", response)
 
+  //
+  // $scope.user = {
+  //   title: 'Developer',
+  //   email: 'ipsum@lorem.com',
+  //   firstName: '',
+  //   lastName: '',
+  //   company: 'Google',
+  //   address: '1600 Amphitheatre Pkwy',
+  //   city: 'Mountain View',
+  //   state: 'CA',
+  //   biography: 'Loves kittens, snowboarding, and can type at 130 WPM.\n\nAnd rumor has it she bouldered up Castle Craig!',
+  //   postalCode: '94043'
+  // };
+
+  $scope.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS ' +
+  'MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI ' +
+  'WY').split(' ').map(function(state) {
+      return {abbrev: state};
     });
 
   var $results = document.querySelector('.results');
@@ -42,23 +40,6 @@ app.controller('leaserCtrl', ['$scope', '$http', '$localStorage', '$rootScope', 
     appendToResult('<pre>' + JSON.stringify(value, null, 2) + '</pre>');
   });
 
-  $http ({
- method: 'GET',
- url: 'https://api.backand.com/1/query/data/getMyListings',
- params: {
-   parameters: {
-     values: firebase.auth().currentUser.uid
-   }
- }
-}).then(function successCallback(response) {
-    console.log("Scuess", response)
-    $scope.myResults = response.data;
-  }, function errorCallback(response) {
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
-    console.log("Nooo", response)
-
-  });
 
 
   $scope.listPlace = function() {
@@ -86,6 +67,7 @@ app.controller('leaserCtrl', ['$scope', '$http', '$localStorage', '$rootScope', 
      // when the response is available
      $scope.results = JSON.stringify(response.data);
      console.log(response);
+     $location.path("/profile");
    }, function errorCallback(response) {
      // called asynchronously if an error occurs
      // or server returns response with an error status.
@@ -120,8 +102,10 @@ app.controller('leaserCtrl', ['$scope', '$http', '$localStorage', '$rootScope', 
 
     reader.onload = function(e) {
       upload(file.name, e.currentTarget.result).then(function(res) {
+
         $scope.imageUrl = res.data.url;
         $scope.filename = file.name;
+        console.log("HIT HERE");
       }, function(err){
         alert(err.data);
       });
@@ -143,13 +127,11 @@ app.controller('leaserCtrl', ['$scope', '$http', '$localStorage', '$rootScope', 
   function upload(filename, filedata) {
     // By calling the files action with POST method in will perform
     // an upload of the file into Backand Storage
-    var photoHash = hashCode(filename);
-    photos.push(photoHash);
 
     console.log("What is totals? ", photos);
     return $http({
       method: 'POST',
-      url : "https://api.backand.com/1/objects/action/room/1?",
+      url : "https://api.backand.com/1/objects/action/room/?",
       params:{
         "name": filesActionName
       },
@@ -159,13 +141,14 @@ app.controller('leaserCtrl', ['$scope', '$http', '$localStorage', '$rootScope', 
       // you need to provide the file name and the file data
       data: {
         "filename": filename,
-        "filedata": filedata.substr(filedata.indexOf(',') + 1, filedata.length), //need to remove the file prefix type
-        "id": photoHash
+        "filedata": filedata.substr(filedata.indexOf(',') + 1, filedata.length) //need to remove the file prefix type
       }
     }).then(function successCallback(response) {
-     console.log(response)
+     console.log("1",response)
+     photos.push(response.data.url);
+
    }, function errorCallback(response) {
-     console.log(response);
+     console.log("2",response)
    });
   };
 
@@ -204,4 +187,13 @@ app.controller('leaserCtrl', ['$scope', '$http', '$localStorage', '$rootScope', 
 
 
 
-}]);
+
+}]).config(function($mdThemingProvider) {
+
+    // Configure a dark theme with primary foreground yellow
+
+    $mdThemingProvider.theme('docs-dark', 'default')
+      .primaryPalette('yellow')
+      .dark();
+
+  });

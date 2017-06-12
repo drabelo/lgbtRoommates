@@ -15,20 +15,11 @@ Location
 
 </form>
 
-<a ng-click="listPlace()" class="btn btn-raised btn-success">List this</a>
 
 <br>
 <br>
-<br>
-Places I have put up:
-<br>
-{{myResults}}
-
-
-<br>
-<br>
-<div class="container" ng-init="initCtrl()">
-  <h2>Backand Simple Upload File</h2>
+<div ng-init="initCtrl()">
+  <h2>Upload Images</h2>
   <br/>
   <form role="form" name="uploadForm">
     <div class="row">
@@ -39,3 +30,5 @@ Places I have put up:
     </div>
   </form>
 </div>
+<br>
+<a ng-click="listPlace()" class="btn btn-raised btn-success">List this</a>

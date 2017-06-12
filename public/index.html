@@ -1,29 +1,31 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="MyApp">
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
     <title>LGBT Roommate</title>
 
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="assets/css/random.css">
+    <link rel="stylesheet" href="assets/css/testing.css">
+    <link href="assets/css/landing-page.css" rel="stylesheet">
+    <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
     <script src="teleport-autocomplete/dist/teleport-autocomplete.js"></script>
     <link rel="stylesheet" href="teleport-autocomplete/dist/teleport-autocomplete.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
-    <link rel="stylesheet" href="assets/css/random.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.js"></script>
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.5.1/restangular.js"></script>
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.5.1/restangular.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js'></script>
 
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.0.0/lodash.js"></script>
 
     <script src="JS/app.js"></script>
     <script src="partials/login/loginController.js"></script>
@@ -31,14 +33,18 @@
     <script src="partials/results/resultsController.js"></script>
     <script src="partials/dashboard/dashController.js"></script>
     <script src="partials/register/registerController.js"></script>
+    <script src="partials/roomdetails/roomdetailController.js"></script>
     <script src="partials/leaser/leaserController.js"></script>
     <script src="partials/search/searchController.js"></script>
+    <script src="partials/profile/profileController.js"></script>
+    <script src="partials/messaging/messagingController.js"></script>
+    <script src="partials/messaging/messagingList/messagingListController.js"></script>
 
     <script src="JS/ngstorage/ngStorage.min.js"></script>
     <script src="JS/ng-idle/angular-idle.js"></script>
     <!-- <script src="JS/lodash/lodash.js"></script> -->
 
-    <script src="http://cdn.backand.net/backand/dist/1.8.11/backand.min.js"></script>
+    <script src="https://cdn.backand.net/backand/dist/1.8.11/backand.min.js"></script>
 
     <style>
         body {
@@ -48,7 +54,6 @@
         }
     </style>
 
-    <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
     <script>
         // Initialize Firebase
         var config = {
@@ -59,11 +64,13 @@
             messagingSenderId: "790913208393"
         };
         firebase.initializeApp(config);
+
+
     </script>
 
 </head>
 
-<body>
+<body ng-app="MyApp">
 
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -81,10 +88,11 @@
                     <li ng-class="menuClass('index')"><a href="#!index">Home</a></li>
                     <li ng-class="menuClass('search')"><a href="#!search">Search for a room</a></li>
                     <li ng-class="menuClass('leaser')"><a href="#!leaser">Lease a place</a></li>
-                    <li ng-class="menuClass('login')"><a href="#!login">Login</a></li>
-                    <li ng-class="menuClass('register')"><a href="#!register">Register</a></li>
-                    <li ng-class="menuClass('dashboard')"><a href="#!dashboard">Dashboard</a></li>
-                    <li ng-class="menuClass('logout')"><a href="#!logout">Logout</a></li>
+                    <li ng-class="menuClass('login')" ng-show="showLogin"><a href="#!login">Login</a></li>
+                    <li ng-class="menuClass('register')" ng-show="showRegister"><a href="#!register">Register</a></li>
+                    <li ng-class="menuClass('profile')" ng-show="showProfile"><a href="#!profile">Profile</a></li>
+                    <li ng-class="menuClass('messageList')" ng-show="showMessages"><a href="#!messageList">Messages</a></li>
+                    <li ng-class="menuClass('logout')" ng-show="showLogout"><a href="#!logout">Logout</a></li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -97,8 +105,6 @@
 
     </div>
     <!-- /container -->
-
-
 
 
 </body>
