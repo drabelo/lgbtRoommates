@@ -2,6 +2,7 @@
   "name": "saas",
   "main": "server.js",
   "dependencies": {
+    "angular-local-storage": "^0.6.0",
     "bcrypt": "^0.8.7",
     "body-parser": "^1.15.1",
     "cloudant": "^1.4.2",

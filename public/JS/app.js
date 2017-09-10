@@ -1,4 +1,4 @@
-var app = angular.module("MyApp", ['ngRoute', 'ngMaterial', 'backand', 'ngStorage', 'ngIdle', 'firebase']).
+var app = angular.module("MyApp", ['ngRoute', 'ngMaterial', 'backand', 'ngStorage', 'LocalStorageModule', 'ngIdle', 'firebase']).
 config(function($routeProvider, $locationProvider, BackandProvider) {
     $locationProvider.hashPrefix('!');
     $routeProvider.

@@ -1,4 +1,4 @@
-app.controller('RoomDetailsCtrl', ['$scope', '$http', '$localStorage', '$rootScope', '$location', '$firebaseObject', function($scope, $http, $localStorage, $rootScope, $location, $firebaseObject) {
+app.controller('RoomDetailsCtrl', ['$scope', '$http', 'localStorageService', '$rootScope', '$location', '$firebaseObject', function($scope, $http, localStorageService, $rootScope, $location, $firebaseObject) {
 
 
 if($rootScope.room == null){
@@ -8,16 +8,37 @@ if($rootScope.room == null){
 $scope.title = $rootScope.room.title;
 $scope.about = $rootScope.room.body;
 $scope.image = $rootScope.room.image;
-$scope.uid = $rootScope.room.person2;
-$scope.id = $rootScope.room.id;
 
+$http ({
+  method: 'GET',
+  url: 'https://api.backand.com/1/query/data/getUser',
+  params: {
+    parameters: {
+      uid: $rootScope.room.ownerId,
+    }
+  }
+}).then(function successCallback(response) {
+  console.log("SUCCESFULLY FOUND USER", response.data[0]);
+  $scope.name = response.data[0].firstName + " " + response.data[0].lastName;
+  $scope.email = response.data[0].email;
+}, function errorCallback(response) {
+    console.log(response);
+});
+
+$scope.name = localStorageService.get('currentUser').firstName + " " + localStorageService.get('currentUser').lastName;
+$scope.email = localStorageService.get('currentUser').email;
 console.log($scope.room);
 
 
-$scope.myValue = false;
+$scope.showDelete = false;
+$scope.showMessaging = true;
 
-if($scope.uid === firebase.auth().currentUser.uid){
-  $scope.myValue = true;
+console.log($rootScope.room.ownerId);
+console.log(firebase.auth().currentUser.uid);
+
+if($rootScope.room.ownerId === firebase.auth().currentUser.uid){
+  $scope.showDelete = true;
+  $scope.showMessaging = false;
 }
 
 console.log("What is rootScope," , $rootScope.room);

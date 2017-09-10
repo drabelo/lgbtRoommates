@@ -5,16 +5,11 @@ app.controller('MessagingCtrl', ['$scope', '$http', '$localStorage', '$rootScope
     console.log("init, what is person1: ", $rootScope.room)
 
     $scope.person1 = curUid;
-    $scope.person2 = $rootScope.room.person2;
+    $scope.person2 = $rootScope.room.ownerId;
     $scope.Message = "";
     $scope.roomId = $rootScope.room.roomId;
     $scope.conversation = {};
 
-
-    if($rootScope.room.person1 != curUid){
-      $rootScope.room.person2 = $rootScope.room.person1;
-      $rootScope.room.person1 = curUid;
-    }
 
 
 

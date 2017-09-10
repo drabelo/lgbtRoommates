@@ -1,15 +1,12 @@
-app.controller('ProfileCtrl', ['$scope', '$http', '$localStorage', '$rootScope', '$location', function($scope, $http, $localStorage, $rootScope, $location) {
+app.controller('ProfileCtrl', ['$scope', '$http', 'localStorageService', '$rootScope', '$location', function($scope, $http, localStorageService, $rootScope, $location) {
   $scope.email = firebase.auth().currentUser.email;
   $scope.name = firebase.auth().currentUser.displayName;
   $scope.uid = firebase.auth().currentUser.uid;
 
   $scope.cards = [];
+  console.log("Current user:", localStorageService.get('currentUser'));
+  $scope.name = localStorageService.get('currentUser').firstName + " " + localStorageService.get('currentUser').lastName;
 
-  firebase.database().ref('/users/' + firebase.auth().currentUser.uid).once('value').then(function(snapshot) {
-  console.log("hit here");
-  console.log(snapshot.val())
-  $scope.name = snapshot.val().firstName + " " + snapshot.val().lastName;
-});
 
   $http ({
    method: 'GET',
@@ -30,7 +27,7 @@ app.controller('ProfileCtrl', ['$scope', '$http', '$localStorage', '$rootScope',
         }catch(e){
           image = response.data[i].photos
         }
-        $scope.cards.push({"title": response.data[i].title, "body": response.data[i].about, "image" : image, "id" : response.data[i].id, "uid" : response.data[i].uid});
+        $scope.cards.push({"title": response.data[i].title, "body": response.data[i].about, "image" : image, "id" : response.data[i].id, "ownerId" : response.data[i].uid});
         console.log("What is cards? ", $scope.cards)
       }
 
@@ -40,7 +37,6 @@ app.controller('ProfileCtrl', ['$scope', '$http', '$localStorage', '$rootScope',
       console.log("Nooo", response)
 
     });
-
 
       $scope.goToRoom = function(info) {
         $rootScope.room = info;

@@ -12,10 +12,13 @@ Description: {{about}}
 <br>
 <br>
 <br>
-UID: {{uid}}
-
-<button type="submit" ng-show="myValue" ng-click="delete()" class="btn btn-primary">Delete listing</button>
-
-
+Owner
 <br>
-<button type="submit" value="Search" ng-click="message()" class="btn btn-primary">Message roommate</button>
+Name: {{name}}
+<br>
+Email: {{email}}
+<br>
+<br>
+<br>
+<button type="submit" ng-show="showDelete" ng-click="delete()" class="btn btn-primary">Delete listing</button>
+<button type="submit" ng-show="showMessaging" value="Search" ng-click="message()" class="btn btn-primary">Message roommate</button>

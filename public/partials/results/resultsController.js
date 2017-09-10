@@ -21,7 +21,7 @@ app.controller('ResultsController', ['$scope', '$http', '$localStorage', '$rootS
     // $scope.results = JSON.stringify(response.data);
     console.log("Whats the image? ", response.data[0].photos.split(",")[0])
     for (var i = 0; i < response.data.length; i++) {
-      $scope.cards.push({"title": response.data[i].title, "body": response.data[i].about, "image" : response.data[i].photos.split(",")[0], "roomId" : response.data[i].id, "person1" : firebase.auth().currentUser.uid, "person2" : response.data[i].uid});
+      $scope.cards.push({"title": response.data[i].title, "body": response.data[i].about, "image" : response.data[i].photos.split(",")[0], "roomId" : response.data[i].id, "ownerId" : response.data[i].uid});
 
     }
   }, function errorCallback(response) {

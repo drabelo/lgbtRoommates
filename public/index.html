@@ -41,6 +41,7 @@
     <script src="partials/messaging/messagingList/messagingListController.js"></script>
 
     <script src="JS/ngstorage/ngStorage.min.js"></script>
+    <script src="JS/localStorage.js"></script>
     <script src="JS/ng-idle/angular-idle.js"></script>
     <!-- <script src="JS/lodash/lodash.js"></script> -->
 
@@ -86,7 +87,6 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li ng-class="menuClass('index')"><a href="#!index">Home</a></li>
-                    <li ng-class="menuClass('search')"><a href="#!search">Search for a room</a></li>
                     <li ng-class="menuClass('leaser')"><a href="#!leaser">Lease a place</a></li>
                     <li ng-class="menuClass('login')" ng-show="showLogin"><a href="#!login">Login</a></li>
                     <li ng-class="menuClass('register')" ng-show="showRegister"><a href="#!register">Register</a></li>
